@@ -1,16 +1,19 @@
 import axios from "axios";
-import {
-  CommandInteraction, GuildMember, User,
-} from "discord.js";
+import { CommandInteraction, GuildMember, User } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
 
 @Discord()
 export class Example {
   @Slash({ name: "avatar", description: "Get a users avatar!" })
   async avi(
-    @SlashOption({name: "user", description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", required: false})
+    @SlashOption({
+      name: "user",
+      description: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      required: false,
+    })
     user: User,
-    interaction: CommandInteraction) {
+    interaction: CommandInteraction
+  ) {
     if (user) {
       const avatar = user.displayAvatarURL();
       await interaction.reply(avatar ?? "No avatar found");
@@ -19,4 +22,4 @@ export class Example {
       await interaction.reply(avatar ?? "No avatar found");
     }
   }
-  }
+}

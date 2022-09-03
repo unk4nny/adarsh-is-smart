@@ -1,7 +1,5 @@
 import axios from "axios";
-import {
-  CommandInteraction,
-} from "discord.js";
+import { CommandInteraction } from "discord.js";
 import { Discord, Slash } from "discordx";
 
 @Discord()

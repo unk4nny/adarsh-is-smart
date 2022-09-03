@@ -5,7 +5,7 @@ import { dirname, importx } from "@discordx/importer";
 import type { Interaction, Message } from "discord.js";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
-config()
+config();
 export const bot = new Client({
   // To only use global commands (use @Guild for specific guild command), comment this line
   botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
@@ -50,7 +50,6 @@ bot.on("messageCreate", (message: Message) => {
 });
 
 async function run() {
-
   // The following syntax should be used in the ECMAScript environment
   await importx(dirname(import.meta.url) + "/{events,commands}/**/*.{ts,js}");
 
