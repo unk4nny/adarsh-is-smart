@@ -1,10 +1,11 @@
 import "reflect-metadata";
 
+import { config } from "dotenv";
 import { dirname, importx } from "@discordx/importer";
 import type { Interaction, Message } from "discord.js";
 import { IntentsBitField } from "discord.js";
 import { Client } from "discordx";
-
+config()
 export const bot = new Client({
   // To only use global commands (use @Guild for specific guild command), comment this line
   botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
@@ -20,11 +21,6 @@ export const bot = new Client({
 
   // Debug logs are disabled in silent mode
   silent: false,
-
-  // Configuration for @SimpleCommand
-  simpleCommand: {
-    prefix: "!",
-  },
 });
 
 bot.once("ready", async () => {
@@ -54,9 +50,6 @@ bot.on("messageCreate", (message: Message) => {
 });
 
 async function run() {
-  // The following syntax should be used in the commonjs environment
-  //
-  // await importx(__dirname + "/{events,commands}/**/*.{ts,js}");
 
   // The following syntax should be used in the ECMAScript environment
   await importx(dirname(import.meta.url) + "/{events,commands}/**/*.{ts,js}");

@@ -2,9 +2,7 @@
 .vscode
 .env
 .env.local
-package-lock.json
-yarn.lock
 
 # folders
-build
-node_modules
+build/
+node_modules/
